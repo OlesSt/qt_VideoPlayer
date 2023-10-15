@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Multimedia MultimediaWidgets)
 
 add_executable(qt_VideoPlayer
   main.cpp
@@ -19,7 +19,10 @@ add_executable(qt_VideoPlayer
   videoplayer.cpp
   videoplayer.ui
 )
-target_link_libraries(qt_VideoPlayer Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Multimedia)
+target_link_libraries(qt_VideoPlayer Qt${QT_VERSION_MAJOR}::Core
+                                     Qt${QT_VERSION_MAJOR}::Widgets
+                                     Qt${QT_VERSION_MAJOR}::Multimedia
+                                     Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 
 install(TARGETS qt_VideoPlayer
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
